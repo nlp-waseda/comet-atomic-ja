@@ -8,6 +8,35 @@ The graph is built from scratch, without translation.
 The graph is in JSON Lines format.
 Each line has an event and its inferences for the four relation types.
 
+```json
+{
+    "event": "Xが顔を洗う",
+    "inference": {
+        "event": {
+            "before": [
+                "Xが水道で水を出す"
+            ],
+            "after": [
+                "Xがタオルを準備する",
+                "Xが鏡に映った自分の顔に覚えのない傷を見つける",
+                "Xが歯磨きをする"
+            ]
+        },
+        "mental_state": {
+            "before": [
+                "スッキリしたい", 
+                "眠いのでしゃきっとしたい"
+            ],
+            "after": [
+                "さっぱりして眠気覚ましになる",
+                "きれいになる",
+                "さっぱりした"
+            ]
+        }
+    }
+}
+```
+
 ## Model
 
 We finetune the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
