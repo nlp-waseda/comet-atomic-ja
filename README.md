@@ -1,12 +1,19 @@
 # COMET-ATOMIC ja
 
-We build a commonsense knowledge graph on events in Japanese with reference to ATOMIC and COMET.
+We build a commonsense knowledge graph on events in Japanese, with reference to [ATOMIC](https://allenai.org/data/atomic) and [COMET](https://github.com/atcbosselut/comet-commonsense).
 The graph is built from scratch, without translation.
 
 ## Data
 
 The graph is in JSON Lines format.
-Each line has an event and its inferences for the four relation types.
+Each line has an event and its inferences for the four relation types, derived from those in ATOMIC.
+
+| \\ | Event | Mental state |
+| - | - | - |
+| Before | xNeed | xIntent |
+| After | xEffect | xReact |
+
+An example of the JSON objects is as follows:
 
 ```json
 {
@@ -37,14 +44,20 @@ Each line has an event and its inferences for the four relation types.
 }
 ```
 
-## Model
+## Models
 
 We finetune the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
 
 - [nlp-waseda/comet-gpt2-small-japanese](https://huggingface.co/nlp-waseda/comet-gpt2-small-japanese)
 - [nlp-waseda/comet-t5-base-japanese](https://huggingface.co/nlp-waseda/comet-t5-base-japanese)
 
-## References
+For the GPT-2-based model, special tokens for the four relation are added to the vocabulary.
+Input a pair of a head and a special token to generate a tail.
+
+The T5-based model infers a tail with a prompt in natural language.
+The prompts are different for each relation.
+
+## Reference
 
 ```bib
 @InProceedings{ide_nlp2023_event,
