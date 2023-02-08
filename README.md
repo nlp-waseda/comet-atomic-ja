@@ -10,10 +10,10 @@ We obtained the seed graph by Yahoo! Crowdsourcing and expanded it by in-context
 The graph is in JSON Lines format.
 Each line has an event and its inferences for the four relation types, derived from those in ATOMIC.
 
-| \\ | Event | Mental state |
-| - | - | - |
-| Before | xNeed | xIntent |
-| After | xEffect | xReact |
+| \\     | Event   | Mental state |
+| :----- | :------ | :----------- |
+| Before | xNeed   | xIntent      |
+| After  | xEffect | xReact       |
 
 An example of the JSON objects is as follows:
 
@@ -48,7 +48,7 @@ An example of the JSON objects is as follows:
 
 ## Models
 
-We finetune the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
+We finetuned the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
 The models are available at Huggingface Models:
 
 - [nlp-waseda/comet-gpt2-small-japanese](https://huggingface.co/nlp-waseda/comet-gpt2-small-japanese)
@@ -61,6 +61,14 @@ Note that the head should be segmented into words by [Juman++](https://github.co
 The T5-based model infers a tail with a prompt in natural language.
 The prompts are different for each relation.
 
+These two models were trained on 90% of the graph.
+The evaluation results for the remaining 10% are as follows:
+
+| Model         | BLUE  | BERTScore |
+| :------------ | ----: | --------: |
+| COMET-GPT2 ja | 43.61 | 87.56     |
+| COMET-T5 ja   | 39.85 | 82.37     |
+
 ## Reference
 
 ```bib
@@ -69,6 +77,7 @@ The prompts are different for each relation.
     title =     "人間と言語モデルに対するプロンプトを用いたゼロからのイベント常識知識グラフ構築",
     booktitle = "言語処理学会第29回年次大会",
     year =      "2023",
-    url =       ""
+    url =       "https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf"
+    note =      "in Japanese"
 }
 ```
