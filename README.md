@@ -3,6 +3,8 @@
 We build a commonsense knowledge graph on events in Japanese, with reference to [ATOMIC](https://allenai.org/data/atomic) and [COMET](https://github.com/atcbosselut/comet-commonsense).
 The graph is built from scratch, without translation.
 
+We obtained the seed graph by Yahoo! Crowdsourcing and expanded it by in-context learning with HyperCLOVA JP.
+
 ## Data
 
 The graph is in JSON Lines format.
@@ -47,12 +49,14 @@ An example of the JSON objects is as follows:
 ## Models
 
 We finetune the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
+The models are available at Huggingface Models:
 
 - [nlp-waseda/comet-gpt2-small-japanese](https://huggingface.co/nlp-waseda/comet-gpt2-small-japanese)
 - [nlp-waseda/comet-t5-base-japanese](https://huggingface.co/nlp-waseda/comet-t5-base-japanese)
 
-For the GPT-2-based model, special tokens for the four relation are added to the vocabulary.
+For the GPT2-based model, special tokens for the four relation are added to the vocabulary.
 Input a pair of a head and a special token to generate a tail.
+Note that the head should be segmented into words by [Juman++](https://github.com/ku-nlp/jumanpp), due to the base model.
 
 The T5-based model infers a tail with a prompt in natural language.
 The prompts are different for each relation.
