@@ -69,9 +69,27 @@ The evaluation results for the remaining 10% are as follows:
 | COMET-GPT2 ja | 43.61 | 87.56     |
 | COMET-T5 ja   | 39.85 | 82.37     |
 
+## Training
+
+You can finetune models on the graph.
+Note that the scripts are separated for GPT-2 and T5.
+
+An example of finetuning GPT-2 is as follows:
+
+```bash
+pip install -r requirements.txt
+python train_gpt2.py \
+    --graph_jsonl graph_mrph.jsonl \
+    --model_name_or_path nlp-waseda/gpt2-small-japanese \
+    --output_dir comet_gpt2 \
+    --batch_size 16 \
+    --learning_rate 2e-5 \
+    --num_epochs 3
+```
+
 ## Reference
 
-```bib
+```bibtex
 @InProceedings{ide_nlp2023_event,
     author =    "井手竜也 and 村田栄樹 and 堀尾海斗 and 河原大輔 and 山崎天 and 李聖哲 and 新里顕大 and 佐藤敏紀",
     title =     "人間と言語モデルに対するプロンプトを用いたゼロからのイベント常識知識グラフ構築",
