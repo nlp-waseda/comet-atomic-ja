@@ -1,14 +1,17 @@
 # COMET-ATOMIC ja
 
-We build a commonsense knowledge graph on events in Japanese, with reference to [ATOMIC](https://allenai.org/data/atomic) and [COMET](https://github.com/atcbosselut/comet-commonsense).
-The graph is built from scratch, without translation.
+We built a commonsense knowledge graph on events in Japanese, with reference to [ATOMIC](https://allenai.org/data/atomic) and [COMET](https://github.com/atcbosselut/comet-commonsense).
+The graph was built from scratch, without translation.
 
 We obtained the seed graph by Yahoo! Crowdsourcing and expanded it by in-context learning with HyperCLOVA JP.
 
 ## Data
 
 The graph is in JSON Lines format.
-Each line has an event and its inferences for the four relation types, derived from those in ATOMIC.
+Each line contains an event and its inferences for the four relation types, derived from those in ATOMIC.
+
+We rearranged the relation types in ATOMIC by considering the two dimensions: *inference categories* and *time series*.
+Therefore, the graph covers the following relations:
 
 | \\     | Event   | Mental state |
 | :----- | :------ | :----------- |
