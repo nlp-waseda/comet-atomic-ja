@@ -90,7 +90,7 @@ python train_gpt2.py \
     --num_epochs 3
 ```
 
-## Reference
+## References
 
 ```bibtex
 @InProceedings{ide_nlp2023_event,
@@ -99,6 +99,15 @@ python train_gpt2.py \
     booktitle = "言語処理学会第29回年次大会",
     year =      "2023",
     url =       "https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf"
+    note =      "in Japanese"
+}
+
+@InProceedings{murata_nlp2023,
+    author =    "村田栄樹 and 井手竜也 and 榮田亮真 and 河原大輔 and 山崎天 and 李聖哲 and 新里顕大 and 佐藤敏紀",
+    title =     "大規模言語モデルによって構築された常識知識グラフの拡大と低コストフィルタリング",
+    booktitle = "言語処理学会第29回年次大会",
+    year =      "2023",
+    url =       "https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B9-1.pdf"
     note =      "in Japanese"
 }
 ```
