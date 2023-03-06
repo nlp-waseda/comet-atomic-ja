@@ -49,9 +49,22 @@ An example of the JSON objects is as follows:
 }
 ```
 
-`graph.jsonl` is the original graph built in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf), and `graph_v2.jsonl` is the larger one expanded in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B9-1.pdf).
+`graph.jsonl` is the original graph built in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf), while `graph_v2.jsonl` is the larger one expanded in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B9-1.pdf).
+The graphs with `mrph` in their filename have the triples whose head and tail were segmented into words by [Juman++](https://github.com/ku-nlp/jumanpp).
 
-The graphs with `_mrph` in their filename have the triples whose head and tail were segmented into words by [Juman++](https://github.com/ku-nlp/jumanpp).
+The original graph and `v2` have 1,471 and 1,429 unique heads, respectively.
+The numbers of unique triples in their graphs are as follows:
+
+| Relation | Original |     V2 |
+| :------- | -------: | -----: |
+| xNeed    |    9,403 | 44,269 |
+| xEffect  |    8,792 | 36,920 |
+| xIntent  |   10,155 | 52,745 |
+| xReact   |   10,941 | 60,616 |
+
+For the original graph, ten inferences were generated for each event and relation.
+`v2` was expanded by generating ten times as many inferences, i.e., 100 inferences for each event and relation.
+Note that in both graphs, duplicated triples were removed.
 
 ## Models
 
@@ -74,11 +87,11 @@ The prompts are different for each relation.
 These two models were trained on 90% of the graph.
 The evaluation results for the remaining 10% are as follows:
 
-| Model            | BLUE  | BERTScore |
+| Model            |  BLUE | BERTScore |
 | :--------------- | ----: | --------: |
-| COMET-GPT2 ja    | 43.61 | 87.56     |
+| COMET-GPT2 ja    | 43.61 |     87.56 |
 | COMET-GPT2 ja v2 |       |           |
-| COMET-T5 ja      | 39.85 | 82.37     |
+| COMET-T5 ja      | 39.85 |     82.37 |
 
 COMET-GPT2 ja v2 will be evaluated soon.
 
