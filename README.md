@@ -7,7 +7,7 @@ We obtained the seed graph by Yahoo! Crowdsourcing and expanded it by in-context
 
 ## Data
 
-The graph is in JSON Lines format.
+The graphs are in JSON Lines format.
 Each line contains an event and its inferences for the four relation types, derived from those in ATOMIC.
 
 We rearranged the relation types in ATOMIC by considering the two dimensions: *inference categories* and *time series*.
@@ -49,17 +49,24 @@ An example of the JSON objects is as follows:
 }
 ```
 
+`graph.jsonl` is the original graph built in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf), and `graph_v2.jsonl` is the larger one expanded in [this paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B9-1.pdf).
+
+The graphs with `_mrph` in their filename have the triples whose head and tail were segmented into words by [Juman++](https://github.com/ku-nlp/jumanpp).
+
 ## Models
 
 We finetuned the Japanese [GPT-2](https://huggingface.co/nlp-waseda/gpt2-small-japanese) and [T5](https://huggingface.co/megagonlabs/t5-base-japanese-web) on the built graph.
 The models are available at Huggingface Models:
 
-- [nlp-waseda/comet-gpt2-small-japanese](https://huggingface.co/nlp-waseda/comet-gpt2-small-japanese)
-- [nlp-waseda/comet-t5-base-japanese](https://huggingface.co/nlp-waseda/comet-t5-base-japanese)
+- [`nlp-waseda/comet-gpt2-small-japanese`](https://huggingface.co/nlp-waseda/comet-gpt2-small-japanese)
+- [`nlp-waseda/comet-v2-gpt2-small-japanese`](https://huggingface.co/nlp-waseda/comet-v2-gpt2-small-japanese)
+- [`nlp-waseda/comet-t5-base-japanese`](https://huggingface.co/nlp-waseda/comet-t5-base-japanese)
+
+Note that `v2` models were finetuned on the expanded graph.
 
 For the GPT2-based model, special tokens for the four relation are added to the vocabulary.
 Input a pair of a head and a special token to generate a tail.
-Note that the head should be segmented into words by [Juman++](https://github.com/ku-nlp/jumanpp), due to the base model.
+Note that the head should be segmented into words by Juman++, due to the base model.
 
 The T5-based model infers a tail with a prompt in natural language.
 The prompts are different for each relation.
@@ -67,10 +74,13 @@ The prompts are different for each relation.
 These two models were trained on 90% of the graph.
 The evaluation results for the remaining 10% are as follows:
 
-| Model         | BLUE  | BERTScore |
-| :------------ | ----: | --------: |
-| COMET-GPT2 ja | 43.61 | 87.56     |
-| COMET-T5 ja   | 39.85 | 82.37     |
+| Model            | BLUE  | BERTScore |
+| :--------------- | ----: | --------: |
+| COMET-GPT2 ja    | 43.61 | 87.56     |
+| COMET-GPT2 ja v2 |       |           |
+| COMET-T5 ja      | 39.85 | 82.37     |
+
+COMET-GPT2 ja v2 will be evaluated soon.
 
 ## Training
 
