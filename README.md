@@ -116,21 +116,12 @@ python train_gpt2.py \
 ## References
 
 ```bibtex
-@InProceedings{ide_nlp2023_event,
-    author =    "井手竜也 and 村田栄樹 and 堀尾海斗 and 河原大輔 and 山崎天 and 李聖哲 and 新里顕大 and 佐藤敏紀",
-    title =     "人間と言語モデルに対するプロンプトを用いたゼロからのイベント常識知識グラフ構築",
-    booktitle = "言語処理学会第29回年次大会",
-    year =      "2023",
-    url =       "https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B2-5.pdf"
-    note =      "in Japanese"
-}
-
-@InProceedings{murata_nlp2023,
-    author =    "村田栄樹 and 井手竜也 and 榮田亮真 and 河原大輔 and 山崎天 and 李聖哲 and 新里顕大 and 佐藤敏紀",
-    title =     "大規模言語モデルによって構築された常識知識グラフの拡大と低コストフィルタリング",
-    booktitle = "言語処理学会第29回年次大会",
-    year =      "2023",
-    url =       "https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/B9-1.pdf"
-    note =      "in Japanese"
+@misc{ide2023phalm,
+      title={PHALM: Building a Knowledge Graph from Scratch by Prompting Humans and a Language Model}, 
+      author={Tatsuya Ide and Eiki Murata and Daisuke Kawahara and Takato Yamazaki and Shengzhe Li and Kenta Shinzato and Toshinori Sato},
+      year={2023},
+      eprint={2310.07170},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
